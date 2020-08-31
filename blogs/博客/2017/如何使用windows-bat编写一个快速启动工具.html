@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>如何使用windows bat编写一个快速启动工具 | 月光倾城的代码小屋</title>
+    <meta name="generator" content="VuePress 1.5.3">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="站在阳光下就能看见太阳">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link rel="preload" href="https://file.lantingshucheng.com/1598883545691/assets/css/0.styles.36fffe06.css" as="style"><link rel="preload" href="https://file.lantingshucheng.com/1598883545691/assets/js/app.8ec6c161.js" as="script"><link rel="preload" href="https://file.lantingshucheng.com/1598883545691/assets/js/3.f525df8d.js" as="script"><link rel="preload" href="https://file.lantingshucheng.com/1598883545691/assets/js/1.91011d41.js" as="script"><link rel="preload" href="https://file.lantingshucheng.com/1598883545691/assets/js/15.636413d8.js" as="script"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/10.de0f41c3.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/11.c06d559b.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/12.9fbc6988.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/13.79f7c9f5.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/14.fb0ed28f.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/16.60227e45.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/17.35440b2d.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/18.103c5794.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/19.9dc12a92.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/20.5dae1d7c.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/21.7c3a7459.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/22.9218a6ce.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/23.55f7a96b.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/24.eaacb7ea.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/25.159a4879.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/26.70acaa48.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/4.c0694630.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/5.72bd3f6d.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/6.ec822ccb.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/7.f7f7277a.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/8.dd61a169.js"><link rel="prefetch" href="https://file.lantingshucheng.com/1598883545691/assets/js/9.7a6349da.js">
+    <link rel="stylesheet" href="https://file.lantingshucheng.com/1598883545691/assets/css/0.styles.36fffe06.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-dad8a512><div data-v-dad8a512><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-dad8a512 data-v-dad8a512><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-dad8a512 data-v-dad8a512><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>月光倾城的代码小屋</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>月光倾城</span>
+            
+          <span data-v-64685f0e>2016 - </span>
+          2020
+        </a></span></div></div> <div class="hide" data-v-dad8a512><header class="navbar" data-v-dad8a512><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.jpg" alt="月光倾城的代码小屋" class="logo"> <span class="site-name">月光倾城的代码小屋</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/同花顺/" class="nav-link"><i class="iconfont undefined"></i>
+  同花顺
+</a></li><li class="dropdown-item"><!----> <a href="/categories/vue/" class="nav-link"><i class="iconfont undefined"></i>
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/categories/mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/javascript/" class="nav-link"><i class="iconfont undefined"></i>
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/有赞/" class="nav-link"><i class="iconfont undefined"></i>
+  有赞
+</a></li><li class="dropdown-item"><!----> <a href="/categories/category2/" class="nav-link"><i class="iconfont undefined"></i>
+  category2
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/theme-reco/" class="nav-link"><i class="iconfont undefined"></i>
+  vuepress-reco
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      联系博主
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/andyliwr" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="mailto:andyliwr@outlook.com" class="nav-link external"><i class="iconfont reco-email"></i>
+  邮箱
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-dad8a512></div> <aside class="sidebar" data-v-dad8a512><div class="personal-info-wrapper" data-v-ca798c94 data-v-dad8a512><img src="/logo.jpg" alt="author-avatar" class="personal-img" data-v-ca798c94> <h3 class="name" data-v-ca798c94>
+    月光倾城
+  </h3> <div class="num" data-v-ca798c94><div data-v-ca798c94><h3 data-v-ca798c94>11</h3> <h6 data-v-ca798c94>Article</h6></div> <div data-v-ca798c94><h3 data-v-ca798c94>10</h3> <h6 data-v-ca798c94>Tag</h6></div></div> <hr data-v-ca798c94></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/同花顺/" class="nav-link"><i class="iconfont undefined"></i>
+  同花顺
+</a></li><li class="dropdown-item"><!----> <a href="/categories/vue/" class="nav-link"><i class="iconfont undefined"></i>
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/categories/mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/javascript/" class="nav-link"><i class="iconfont undefined"></i>
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/有赞/" class="nav-link"><i class="iconfont undefined"></i>
+  有赞
+</a></li><li class="dropdown-item"><!----> <a href="/categories/category2/" class="nav-link"><i class="iconfont undefined"></i>
+  category2
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/theme-reco/" class="nav-link"><i class="iconfont undefined"></i>
+  vuepress-reco
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      联系博主
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/andyliwr" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="mailto:andyliwr@outlook.com" class="nav-link external"><i class="iconfont reco-email"></i>
+  邮箱
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-dad8a512><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>如何使用windows bat编写一个快速启动工具</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>月光倾城</span>
+            
+          <span data-v-64685f0e>2016 - </span>
+          2020
+        </a></span></div></div> <div data-v-dad8a512><main class="page"><div class="page-title" style="display:none;"><h1>如何使用windows bat编写一个快速启动工具</h1> <div data-v-3b7f5bdf><i class="iconfont reco-account" data-v-3b7f5bdf><span data-v-3b7f5bdf>月光倾城</span></i> <i class="iconfont reco-date" data-v-3b7f5bdf><span data-v-3b7f5bdf>2017-03-30 19:58:08</span></i> <!----> <i class="iconfont reco-tag tags" data-v-3b7f5bdf><span class="tag-item" data-v-3b7f5bdf>windows</span><span class="tag-item" data-v-3b7f5bdf>毕设</span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><p>最近做毕设的时候发现每次都需要输入命令启动 mongo 和 redis，还有一些爬虫和后台接口。感觉很麻烦，为什么不用 windows 上类似 shell 的 bat 语法写一个部署工具呢？</p> <h2 id="截图"><a href="#截图" class="header-anchor">#</a> 截图</h2> <p><img src="https://file.lantingshucheng.com/2020-08-31-22-03-27.png" alt="主界面"></p> <p><img src="https://file.lantingshucheng.com/2020-08-31-22-03-48.png" alt="启动mongo"></p> <p><img src="https://file.lantingshucheng.com/2020-08-31-22-04-13.png" alt="console"></p> <p>注：图中所用软件为丑陋 cmd 的替换品 <a href="https://github.com/cmderdev/cmder/releases/" target="_blank" rel="noopener noreferrer">cmder<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>不多多说了，直接上代码吧，bat 语法大家可以自己搜索下。</p> <h2 id="主进程-start-bat"><a href="#主进程-start-bat" class="header-anchor">#</a> 主进程 <code>start.bat</code></h2> <div class="language-bat line-numbers-mode"><pre class="language-text"><code>@echo off
+echo 欢迎使用FollowHeart自动化工具，%username% ....
+echo 使用之前请确保mongo和redis安装地址都已经加入到到了系统环境变量里
+ECHO.
+:: 公共参数设置 start
+If %username% == Andyliwr (
+  :: 记得改成ANDYLIWRTHS
+  echo %computername%
+  If %computername% == ANDYLIWRTHS (
+     set projectAddr=C:\Users\Andyliwr\Documents\graduationDesign
+     set mongoDbPath=D:\mongo\data
+     set mongoLogPath=D:\mongo\log\mongo.log
+     set mongoConfAddr=D:\mongo\mongod.conf
+     set redisConfAddr=D:\redis\redis.windows.conf
+  ) Else (
+     set projectAddr=C:\Users\Andyliwr\Documents\graduationDesign
+     set mongoDbPath=E:\mongo_install\data
+     set mongoLogPath=E:\mongo_install\log\mongo.log
+     set mongoConfAddr=E:\mongo_install\mongod.conf
+     set redisConfAddr=E:\redis\redis.windows.conf
+  )
+) Else (
+  If %username% == Greenovia (
+     set projectAddr=G:\git项目\graduationDesign
+     set mongoDbPath=F:\mongo\data
+     set mongoLogPath=F:\mongo\log\mongo.log
+     set mongoConfAddr=F:\mongo\mongod.conf
+     set redisConfAddr=F:\redis\redis.windows.conf
+  ) Else (
+     echo 请使用文本编辑器打开start.bar手动配置地址：
+     :: 请输入你当前的FollowHeart根目录地址:
+     set projectAddr=xxx
+     :: 请输入mongo数据存储地址(类似F:\mongo\data):
+     set mongoDbPath=xxx
+     :: 请输入mongo日志文件地址(类似F:\mongo\log\mongo.log):
+     set mongoLogPath=xxx
+     :: 请输入mongo配置文件的地址(类似F:\mongo\mongod.conf):
+     set mongoConfAddr=xxx
+     :: 请输入mongo配置文件的地址(类似F:\redis\redis.windows.conf):
+     set redisConfAddr=xxx
+  )
+)
+:: 公共参数设置 end
+::清屏操作
+rem cls
+goto start
+:start
+    echo --------------------------------------------------
+    echo --                FollowHeart部署               --
+    echo --  1.启动mongo和redis                          --
+    echo --  2.启动接口                                  --
+    echo --  3.排行榜爬虫                                --
+    echo --  4.百度贴吧榜爬虫                            --
+    echo --  5.启动微信小城程序                          --
+    echo --  6.新环境部署(该选项操作完成后会自动部署)    --
+    echo --  7.END                                       --
+    echo --------------------------------------------------
+    ECHO.
+    echo (请输入数字选择操作命令)
+    set /p ans=
+    if %ans%==1 goto startMongoAndRedis
+    if %ans%==2 goto startApi
+    if %ans%==3 goto startRankReptile
+    if %ans%==4 goto startBdReptile
+    if %ans%==5 goto startWechat
+    if %ans%==6 goto deploy
+    if %ans%==7 goto END
+:startMongoAndRedis
+    echo echo 正在启动redis和mongo...
+    start &quot;启动mongo和redis&quot; startMongoAndRedis.bat %redisConfAddr% %mongoLogPath% %mongoDbPath%
+    echo echo 已经启动redis和mongo...
+    ECHO.
+    ECHO.
+    goto start
+:startApi
+    ECHO.
+    echo 正在启动后端接口，请确保在启动接口之前已经执行过1了...
+    start &quot;启动后端接口&quot; startApi.bat %projectAddr%
+    echo 后端接口启动成功...
+    ECHO.
+    ECHO.
+    goto start
+:startBdReptile
+    ECHO.
+    echo 正在运行百度贴吧爬虫...
+    start &quot;启动百度贴吧爬虫&quot; startBdReptile.bat %projectAddr%
+    ECHO.
+    ECHO.
+    goto start
+:startRankReptile
+    ECHO.
+    echo 正在运行排行榜爬虫...
+    start &quot;启动百度贴吧爬虫&quot; startRankReptile.bat %projectAddr%
+    ECHO.
+    ECHO.
+    goto start
+:startWechat
+    ECHO.
+    echo 正在启动微信小程序...
+   start &quot;启动微信小程序&quot; startWechat.bat %projectAddr%
+    ECHO.
+    ECHO.
+    goto start
+:deploy
+    ECHO.
+    echo ----执行static项目解压操作----
+    :: 执行的逻辑命令--为bat文件传参
+    start static.bat %uatPath% %sourcePath% %sourceDisk%
+    echo ----static项目解压操作完成----
+    goto start
+:END
+    ECHO.
+    echo 退出批处理操作
+pause
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br></div></div><h2 id="启动-redis-和-mongo-startmongoandredis-bat"><a href="#启动-redis-和-mongo-startmongoandredis-bat" class="header-anchor">#</a> 启动 redis 和 mongo <code>startMongoAndRedis.bat</code></h2> <div class="language-bat line-numbers-mode"><pre class="language-text"><code>@echo off
+echo echo 正在启动redis...
+set redisConfAddr=%1
+set mongoLogPath=%2
+set mongoDbPath=%3
+redis-server.exe %redisConfAddr% --loglevel verbose
+If errorlevel 1 (
+    echo Redis已经启动，请打开新的窗口输入redis-cli.exe开启你的管理吧...
+) Else (
+    echo Redis启动失败，请检查你配置的目录是否正确...
+)
+ECHO.
+echo 正在启动Mongo...
+mongod.exe --logpath=%mongoLogPath% --dbpath=%mongoDbPath% --journal --maxConns 20000
+echo %errorlevel%
+If errorlevel 1 (
+    echo Mongo已经启动，请打开新的窗口输入mongo开启你的管理吧...
+) Else (
+    echo Mongo启动失败，请检查你配置的目录是否正确...
+)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h2 id="启动后端接口-startapi"><a href="#启动后端接口-startapi" class="header-anchor">#</a> 启动后端接口 <code>startApi</code></h2> <div class="language-bat line-numbers-mode"><pre class="language-text"><code>@echo off
+set projectAddr=%1
+echo 正在启动后端接口，请确保在启动接口之前已经执行过1了...
+cd %projectAddr%/api
+If exist node_modules (
+   echo &quot;node包已安装...&quot;
+) Else (
+    cnpm install
+)
+node .
+If errorlevel 1 (
+    echo 后端接口已经启动，请在浏览器中打开localhost:3000/explorer来查看吧...
+) Else (
+    echo 后端接口启动失败...
+)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h2 id="启动爬虫-startbdreptile-bat"><a href="#启动爬虫-startbdreptile-bat" class="header-anchor">#</a> 启动爬虫 startBdReptile.bat</h2> <div class="language-bat line-numbers-mode"><pre class="language-text"><code>@echo off
+set projectAddr=%1
+echo 正在运行百度贴吧爬虫...
+cd %projectAddr%/reptile
+If exist node_modules (
+   echo node包已安装...
+) Else (
+   cnpm install
+)
+node networkReptile.js
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h2 id="踩的一些坑"><a href="#踩的一些坑" class="header-anchor">#</a> 踩的一些坑</h2> <p>创建 bat 文件最好先使用系统自带的记事本创建一个文本文件，然后在另存为 bat 文件，并且设置编码为 ASNI，不然很容易中文乱码的。包括使用一些主流的编辑器如 sublime 都会出现这种问题。博主建议使用 sublime 编辑 bat 文件，毕竟有语法高亮和快捷键，写起来很方便。然后编写完了别保存直接复制到记事本中保存，这样能避免中文乱码。如果你有更好的方法，不妨在评论中回复博主。
+<img src="http://img.blog.csdn.net/20170330195143921" alt="保存编码的问题"></p> <h2 id="传送门："><a href="#传送门：" class="header-anchor">#</a> 传送门：</h2> <ol><li><a href="http://www.imooc.com/article/8283" target="_blank" rel="noopener noreferrer">小白都能看懂的 windows 常用 bat 批处理命令<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="http://www.360doc.com/content/11/0804/10/4127803_137849318.shtml" target="_blank" rel="noopener noreferrer">Bat 语法命令<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ol></div> <footer class="page-edit" style="display:none;"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">8/31/2020, 2:16:31 PM</span></div></footer> <!----> <!----> <!----></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="https://file.lantingshucheng.com/1598883545691/assets/js/app.8ec6c161.js" defer></script><script src="https://file.lantingshucheng.com/1598883545691/assets/js/3.f525df8d.js" defer></script><script src="https://file.lantingshucheng.com/1598883545691/assets/js/1.91011d41.js" defer></script><script src="https://file.lantingshucheng.com/1598883545691/assets/js/15.636413d8.js" defer></script>
+  </body>
+</html>
